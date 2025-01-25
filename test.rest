@@ -30,7 +30,7 @@ POST http://localhost:8080/ticket
 Content-Type: application/json
 
 {
-    "title": "Phasellus sit amet porttitor lacus",
-    "description": "Mauris nec interdum orci, quis euismod justo. Sed maximus dolor eu sodales imperdiet. Cras sit amet velit id urna congue iaculis nec nec leo. Integer mattis tincidunt elementum. Nulla non condimentum massa, at cursus nisi. Sed justo nisl, finibus ac nibh pulvinar, euismod interdum diam. Sed eu purus purus.",
-    "userOwnerId": "67954da63a0496131f3192e4"
+    "title": "Nunc cursus pharetra lectus, at pellentesque enim sagittis sed",
+    "description": "Sed sollicitudin egestas ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Donec ullamcorper mi eget rutrum lacinia. Fusce tincidunt lacus quis augue accumsan, eget congue tellus tincidunt.",
+    "userOwnerId": "679570b9f89b9fd7b0f7cef4"
 }
