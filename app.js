@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { initDB, getDB } = require('./connects/db');
-const routeUser = require('./routes/userRouter');
-const routeTicket = require('./routes/ticketRouter');
+const routeUser = require('./routers/userRouter');
+const routeTicket = require('./routers/ticketRouter');
 
 const port = process.env.PORT || 8080;
 const app = express();
