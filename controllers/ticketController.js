@@ -22,7 +22,7 @@ const getTicketById = async (req, res) => {
   }
 
   try {
-    const ticket = await db.getDB().collection('tickets').findOne({ _id: ObjectId(req.params.id) });
+    const ticket = await db.getDB().collection('tickets').findOne({ _id: ObjectId.createFromHexString(req.params.id) });
     if (ticket) {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(ticket);
