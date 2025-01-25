@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { initDB, getDB } = require('./connects/db');
-// const routes = require('./routes/contactRouter');
+const routeUser = require('./routes/userRouter');
+const routeTicket = require('./routes/ticketRouter');
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -11,7 +12,8 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
-// app.use('/contact', routes);
+app.use('/user', routeUser);
+app.use('/ticket', routeTicket);
 
 (async () => {
   try {
