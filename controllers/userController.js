@@ -23,7 +23,7 @@ const getUserById = async (req, res) => {
   }
 
   try {
-    const user = await db.getDB().collection('users').findOne({ _id: ObjectId(req.params.id) });
+    const user = await db.getDB().collection('users').findOne({ _id: ObjectId.createFromHexString(req.params.id) });
     if (user) {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(user);
@@ -43,13 +43,10 @@ const createUser = async (req, res) => {
   const newUser = new user(req.body);
   
   try {
-    newUser.save((error, user) => {
-      if (error) {
-        return res.status(500).json({ message: error.toString() });
-      }
-      res.setHeader('Content-Type', 'application/json');
-      res.status(201).json(user);
-    });
+    await newUser.save()
+    res.setHeader('Content-Type', 'application/json');
+    res.status(201).json(user);
+
   } catch (error) {
     res.status(500).json({ message: error.toString() });
   }

@@ -10,7 +10,7 @@ module.exports = mongoose => {
         type: String,
         required: true,
       },
-      estado: {
+      status: {
         type: String,
         enum: ['open', 'closed', 'on progress'],
         default: 'open',
@@ -31,6 +31,7 @@ module.exports = mongoose => {
       userAdvocateId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
+        default: null,
       },
     }, { versionKey: false })
   );

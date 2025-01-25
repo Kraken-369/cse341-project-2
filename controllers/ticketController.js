@@ -7,7 +7,7 @@ const getAllTickets = async (req, res) => {
   try {
     const tickets = await db.getDB().collection('tickets').find({}).toArray();
     res.setHeader('Content-Type', 'application/json');
-    if (users.length === 0) {
+    if (tickets.length === 0) {
       return res.status(200).json({ message: 'No tickets found' });
     }
     res.json(tickets);
@@ -39,20 +39,16 @@ const createTicket = async (req, res) => {
     return res.status(400).json({ message: 'Ticket data is required' });
   }
 
-  if (!ObjectId.isValid(req.body.userId)) {
+  if (!ObjectId.isValid(req.body.userOwnerId)) {
     return res.status(400).json({ error: "Invalid user ID format" });
   }
 
   const newTicket = new ticket(req.body);
 
   try {
-    newTicket.save((error, ticket) => {
-      if (error) {
-        return res.status(500).json({ message: error.toString() });
-      }
-      res.setHeader('Content-Type', 'application/json');
-      res.status(201).json(ticket);
-    });
+    await newTicket.save()
+    res.setHeader('Content-Type', 'application/json');
+    res.status(201).json(ticket);
   } catch (error) {
     res.status(500).json({ message: error.toString() });
   }
