@@ -1,12 +1,5 @@
 /**
  * @swagger
- * tags:
- *   name: Tickets
- *   description: Ticket management
- */
-
-/**
- * @swagger
  * /tickets:
  *   get:
  *     summary: Get all tickets
