@@ -54,8 +54,61 @@ const createTicket = async (req, res) => {
   }
 };
 
+const updateTicket = async (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({ message: "Ticket data is required" });
+  }
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ error: "Invalid ticket ID format" });
+  }
+  try {
+    if (
+      !(await db
+        .getDB()
+        .collection("tickets")
+        .findOneAndUpdate(
+          { _id: ObjectId.createFromHexString(req.params.id) },
+          { $set: req.body },
+          {
+            new: true,
+            upsert: false,
+          }
+        ))
+    ) {
+      return res.status(404).json({ error: "Ticket not found" });
+    }
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json({ message: "Ticket updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.toString() });
+  }
+};
+
+const deleteTicket = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ error: "Invalid ticket ID format" });
+  }
+  try {
+    if (
+      !(await db
+        .getDB()
+        .collection("tickets")
+        .findOneAndDelete({ _id: ObjectId.createFromHexString(req.params.id) }))
+    ) {
+      return res.status(404).json({ error: "Ticket not found" });
+    }
+
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json({ message: "Ticket deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.toString() });
+  }
+};
+
 module.exports = {
   getAllTickets,
   getTicketById,
-  createTicket
+  createTicket,
+  updateTicket,
+  deleteTicket
 };
