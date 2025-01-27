@@ -62,3 +62,69 @@
  *       500:
  *         description: Server error.
  */
+
+/**
+ * @swagger
+ * /tickets/{id}:
+ *   put:
+ *     summary: Update ticket by ID
+ *     description: Updates a specific ticket by its ID.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The ID of the ticket to retrieve.
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               status:
+ *                 type: string
+ *                 enum: ['open', 'closed', 'on progress']
+ *               lastUpdate:
+ *                 type: string
+ *               userAdvocateId:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: The updated ticket.
+ *       400:
+ *         description: Ticket data is required or invalid ticket ID format.
+ *       404:
+ *         description: Ticket not found.
+ *       500:
+ *         description: Server error.
+ */
+
+/**
+ * @swagger
+ * /tickets/{id}:
+ *   delete:
+ *     summary: Delete ticket by ID
+ *     description: Deletes a specific ticket by its ID.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The ID of the ticket to retrieve.
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: The ticket was deleted successfully.
+ *       400:
+ *         description: Invalid ticket ID format.
+ *       404:
+ *         description: Ticket not found.
+ *       500:
+ *         description: Server error.
+ */

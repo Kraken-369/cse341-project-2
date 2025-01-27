@@ -65,7 +65,7 @@ const updateTicket = async (req, res) => {
     if (
       !(await db
         .getDB()
-        .collection("tickets")
+        .collection('tickets')
         .findOneAndUpdate(
           { _id: ObjectId.createFromHexString(req.params.id) },
           { $set: req.body },
