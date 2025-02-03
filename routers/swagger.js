@@ -10,7 +10,7 @@ const swaggerOptions = {
       description: 'API documentation for the CSE341 project',
     },
   },
-  apis: ['./routers/*.js'],
+  apis: ['./helpers/*.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

@@ -152,6 +152,8 @@
  *         description: User updated successfully
  *       400:
  *         description: Bad Request - User data is required.
+ *       401:
+ *         description: Unauthorized - User is not authenticated.
  *       404:
  *         description: Not Found - No user found with the provided ID.
  *       500:

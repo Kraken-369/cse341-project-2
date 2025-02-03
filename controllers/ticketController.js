@@ -35,6 +35,7 @@ const getTicketById = async (req, res) => {
 };
 
 const createTicket = async (req, res) => {
+  console.log('Body', req.body);
   if (!req.body) {
     return res.status(400).json({ message: 'Ticket data is required' });
   }
